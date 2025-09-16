@@ -1,0 +1,195 @@
+@import "tailwindcss";
+@source "./src/**/*.{html,njk,js}", "./_site/**/*.html";
+
+/* utilities included via the main import above */
+
+
+/* Tailwind v4: define tokens for colors and effects used */
+/* Using Tailwind v4 defaults; no custom @theme tokens needed here. */
+
+
+.skills {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(13, [col] 1fr);
+    grid-template-rows: repeat(3, [row] auto);
+  }
+
+  .skill {
+    text-align: center;
+    border: 50rem;
+  }
+
+  .a {
+    grid-column: col / span 4;
+    grid-row: row 2;
+  }
+
+  .b {
+    grid-column: col 4 / span 4;
+    grid-row: row 2;
+  }
+
+  .c {
+    grid-column: col 7 / span 4;
+    grid-row: row 2;
+  }
+
+  .d {
+    grid-column: col 10 / span 4;
+    grid-row: row 2;
+  }
+
+  .e {
+    grid-column: col 5 / span 3;
+    grid-row: row 2;
+  }
+
+  .me {
+    grid-column: col 3 / span 9;
+    grid-row: row / span 3;
+  }
+
+  .skill-circle {
+    stroke: #94d8ff;
+    stroke-width: 4px;
+  }
+
+  .skill-text {
+    fill: #003a5c;
+  }
+
+  .my-skillset {
+    font-size: 40%;
+    fill: #003a5c;
+  }
+
+  .my-circle {
+    stroke: #94d8ff;
+    fill: #e1f4ff;
+  }
+
+  .welcome-message {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  @media (min-width: 576px) {
+    .welcome-message {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .welcome-message {
+      font-size: 2rem;
+    }
+  }
+
+  /* --- Animatable hue custom properties --- */
+@property --hue1 {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --hue2 {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 111;
+}
+
+@property --hue3 {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 202;
+}
+
+@property --hue4 {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 266;
+}
+
+/* --- Gradient container --- */
+.gradient-wrap {
+  --transparency-circle: 0.2;
+  --circle-size: 25vw;
+
+  --hue1: 0;
+  --hue2: 111;
+  --hue3: 202;
+  --hue4: 266;
+
+  background:
+    radial-gradient(
+      circle farthest-corner at 0 0,
+      oklch(70% 0.268 calc(var(--hue1) * 1deg) / var(--transparency-circle)) 0%,
+      oklch(70% 0.268 calc(var(--hue1) * 1deg) / 0) var(--circle-size)
+    ),
+    radial-gradient(
+      circle farthest-corner at 30% 0,
+      oklch(96% 0.23 calc(var(--hue2) * 1deg) / var(--transparency-circle)) 0%,
+      oklch(96% 0.23 calc(var(--hue2) * 1deg) / 0) var(--circle-size)
+    ),
+    radial-gradient(
+      circle farthest-corner at 60% 0,
+      oklch(85% 0.19 calc(var(--hue3) * 1deg) / var(--transparency-circle)) 0%,
+      oklch(85% 0.19 calc(var(--hue3) * 1deg) / 0) var(--circle-size)
+    ),
+    radial-gradient(
+      circle farthest-corner at 100% 0,
+      oklch(47% 0.317 calc(var(--hue4) * 1deg) / var(--transparency-circle)) 0%,
+      oklch(47% 0.317 calc(var(--hue4) * 1deg) / 0) var(--circle-size)
+    );
+
+  animation:
+    animate-hue1 6s linear infinite alternate,
+    animate-hue2 8s linear infinite alternate,
+    animate-hue3 10s linear infinite alternate,
+    animate-hue4 12s linear infinite alternate;
+}
+
+/* --- Keyframes for each hue --- */
+@keyframes animate-hue1 {
+  0%   { --hue1: 0; }
+  100% { --hue1: 360; }
+}
+
+@keyframes animate-hue2 {
+  0%   { --hue2: 111; }
+  100% { --hue2: 471; }
+}
+
+@keyframes animate-hue3 {
+  0%   { --hue3: 202; }
+  100% { --hue3: 562; }
+}
+
+@keyframes animate-hue4 {
+  0%   { --hue4: 266; }
+  100% { --hue4: 626; }
+}
+
+/* --- Prefers Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-wrap {
+    animation: none; /* Stop all hue animations */
+  }
+}
+
+/* --- Fallback for browsers without @property (like Firefox) --- */
+@supports not (background: oklch(70% 0.268 0deg)) {
+  /* fallback: static gradient or global hue rotation */
+  .gradient-wrap {
+    animation: fallback-hue-rotate 10s linear infinite;
+    filter: hue-rotate(0deg);
+  }
+
+  @keyframes fallback-hue-rotate {
+    0%   { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+}
+
+/* No custom utility shims needed; relying on Tailwind utilities. */

@@ -1,0 +1,31 @@
+{
+  "name": "julzdsign-2024",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p start:*",
+    "start:eleventy": "eleventy --serve",
+    "start:css": "tailwindcss -i src/styles/site.css -o _site/styles/site.css --watch --content \"./src/**/*.{html,njk,js}\" --content \"./_site/**/*.html\"",
+    "build": "run-s clean build:eleventy build:css",
+    "build:eleventy": "cross-env ELEVENTY_PRODUCTION=true eleventy",
+    "build:css": "tailwindcss -i src/styles/site.css -o _site/styles/site.css --minify --content \"./src/**/*.{html,njk,js}\" --content \"./_site/**/*.html\"",
+    "clean": "rimraf _site"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@tailwindcss/cli": "^4.1.13",
+    "cross-env": "^10.0.0",
+    "html-minifier": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^4.1.13"
+  },
+  "dependencies": {
+    
+  }
+}
