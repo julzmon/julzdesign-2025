@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const htmlmin = require("html-minifier");
+const { minify: htmlMinify } = require("html-minifier-terser");
 const Image = require("@11ty/eleventy-img");
 
 
@@ -60,7 +60,7 @@ module.exports = function(eleventyConfig) {
 
 function htmlminTransform(content, outputPath) {
   if( outputPath.endsWith(".html") ) {
-    let minified = htmlmin.minify(content, {
+    let minified = htmlMinify(content, {
       useShortDoctype: true,
       removeComments: true,
       collapseWhitespace: true
