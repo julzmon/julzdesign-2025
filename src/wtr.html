@@ -1,6 +1,7 @@
 ---
 layout: default
 title: WestRock
+templateEngineOverride: njk
 ---
 
 <section class="px-12 py-20">
@@ -37,8 +38,8 @@ title: WestRock
       <p class="ml-12 mr-6 mb-5 max-w-prose text-xl">I created an extensive backlog encompassing tasks for building a documentation site, infrastructure setup, starter projects, and tokenization. This backlog was strategically designed to support the development of the design system. I then presented the backlog to developers on my team, showcasing the vision and providing them with a clear roadmap.</p>
     </div>
     <div>
-      <img src="../img/westrock/stories-1.png" alt="">
-      <img src="../img/westrock/stories-2.png" alt="">
+      {% image "/img/westrock/stories-1.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/westrock/stories-2.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -52,7 +53,7 @@ title: WestRock
       </p>
     </div>
     <div>
-      <img src="../img/westrock/sketch-vs-figma.png" alt="">
+      {% image "/img/westrock/sketch-vs-figma.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
   <div class="px-10 py-40 min-h-screen bg-gray-100" style="background-image:  url('../img/westrock/figma.png'); background-size: cover; background-repeat: no-repeat;"></div>
@@ -67,7 +68,7 @@ title: WestRock
       </p>
     </div>
     <div>
-      <img src="../img/westrock/kanban.png" alt="">
+      {% image "/img/westrock/kanban.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>

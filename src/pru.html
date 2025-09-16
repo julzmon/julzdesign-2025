@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Prudential
+templateEngineOverride: njk
 ---
 
 
@@ -20,7 +21,7 @@ title: Prudential
       <!-- Visual prompt: Team photo or org chart could go here -->
     </div>
     <div>
-      <img src="../img/pru/library.png" alt="Prudential Library Screenshot">
+      {% image "/img/pru/library.png", "Prudential Library Screenshot", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -40,9 +41,9 @@ title: Prudential
       <!-- Visual prompt: Screenshot of design system website, diagram of CI/CD pipeline or component architecture -->
     </div>
     <div>
-      <img src="../img/pru/ds-nav.png" alt="Component Navigation">
-      <img src="../img/pru/ds-theme.png" alt="Theme Example">
-      <img src="../img/pru/ds-website.png" alt="Design System Website">
+      {% image "/img/pru/ds-nav.png", "Component Navigation", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/ds-theme.png", "Theme Example", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/ds-website.png", "Design System Website", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -62,9 +63,9 @@ title: Prudential
       <!-- Visual prompt: Component documentation pages, mobile UI examples, or test coverage dashboards -->
     </div>
     <div>
-      <img src="../img/pru/IMG_1086.jpeg" alt="Mobile UI Example">
-      <img src="../img/pru/IMG_0704.jpeg" alt="Mobile UI Example 2">
-      <img src="../img/pru/IMG_1106.jpeg" alt="Mobile UI Example 3">
+      {% image "/img/pru/IMG_1086.jpeg", "Mobile UI Example", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/IMG_0704.jpeg", "Mobile UI Example 2", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/IMG_1106.jpeg", "Mobile UI Example 3", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -116,12 +117,12 @@ title: Prudential
       </ul>
     </div>
     <div>
-      <img src="../img/pru/IMG_1086.jpeg" alt="">
-      <img src="../img/pru/IMG_0704.jpeg" alt="">
-      <img src="../img/pru/IMG_1106.jpeg" alt="">
-      <img src="../img/pru/IMG_1086.jpeg" alt="">
-      <img src="../img/pru/IMG_1086.jpeg" alt="">
-      <img src="../img/pru/ds-website.png" alt="">
+      {% image "/img/pru/IMG_1086.jpeg", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/IMG_0704.jpeg", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/IMG_1106.jpeg", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/IMG_1086.jpeg", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/IMG_1086.jpeg", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/ds-website.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -146,10 +147,10 @@ title: Prudential
       </ul>
     </div>
     <div>
-      <img src="../img/pru/workshop1.jpg" alt="">
-      <img src="../img/pru/workshop9.jpg" alt="">
-      <img src="../img/pru/workshop16.jpg" alt="">
-      <img src="../img/pru/cheatsheet.png" alt="">
+      {% image "/img/pru/workshop1.jpg", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/workshop9.jpg", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/workshop16.jpg", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/cheatsheet.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -163,8 +164,8 @@ title: Prudential
         <li>Encouraged open-source practices and contributions to the library.</li>
       </ul>    </div>
     <div class="basis-1/2">
-      <img src="../img/pru/Integration.png" alt="" class="mb-5">
-      <img src="../img/pru/BackstopJS-Report-2.png" alt="">
+      <div class="mb-5">{% image "/img/pru/Integration.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}</div>
+      {% image "/img/pru/BackstopJS-Report-2.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -177,13 +178,12 @@ title: Prudential
       </ul>
     </div>
     <div>
-      <img src="../img/pru/pru-theme-1.png" alt="">
-      <img src="../img/pru/pru-theme-2.png" alt="">
-      <img src="../img/pru/pru-theme-3.png" alt="">
-      <img src="../img/pru/pru-theme-4.png" alt="">
-      <img src="../img/pru/ds-link.png" alt="">
-      <img src="../img/pru/nav-mobile.png" alt="">
+      {% image "/img/pru/pru-theme-1.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/pru-theme-2.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/pru-theme-3.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/pru-theme-4.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/ds-link.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
+      {% image "/img/pru/nav-mobile.png", "", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
-
