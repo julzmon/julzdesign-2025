@@ -32,6 +32,11 @@
     />
     <link rel="manifest" href="{{ '/site.webmanifest' | url }}" />
 
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
     <title>{{ title or metadata.title }}</title>
 
   <link rel="stylesheet" href="{{ '/styles/site.css' | url }}" />
@@ -61,16 +66,33 @@
         // Header hide/show on scroll
         const header = document.getElementById('main-header');
         let lastScrollY = window.scrollY;
+        let lastHideScrollY = window.scrollY; // where we last hid the header
         let ticking = false;
+        // Tuning knobs
+        const HIDE_OFFSET = 150;      // pixels from top before we start hiding on scroll down
+        const SHOW_THRESHOLD = 200;   // pixels scrolled up from last hide before showing again
 
         function updateHeader() {
           const currentScroll = window.scrollY;
-          if (currentScroll > 200 && currentScroll > lastScrollY) {
-            header.style.translate = '-50% -120%';
-            header.style.opacity = '0';
-          } else {
+          const scrollingDown = currentScroll > lastScrollY;
+          const scrollingUp = currentScroll < lastScrollY;
+
+          // Always show near the top
+          if (currentScroll <= HIDE_OFFSET) {
             header.style.translate = '-50% 0';
             header.style.opacity = '1';
+          } else if (scrollingDown) {
+            // Hide when scrolling down past the offset
+            header.style.translate = '-50% -120%';
+            header.style.opacity = '0';
+            lastHideScrollY = currentScroll; // remember where we hid
+          } else if (scrollingUp) {
+            // Only show after the user scrolls up a minimum distance from the last hide point
+            const scrolledUpBy = lastHideScrollY - currentScroll;
+            if (scrolledUpBy >= SHOW_THRESHOLD) {
+              header.style.translate = '-50% 0';
+              header.style.opacity = '1';
+            }
           }
           lastScrollY = currentScroll;
           ticking = false;
@@ -100,18 +122,18 @@
     </header>
   <div class="gradient-wrap">
       <div class="grid grid-flow-col auto-cols-fr mb-12">
-        <div class="flex justify-center pt-[8rem] pb-5">j</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">u</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">l</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">z</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">d</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">e</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">s</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">i</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">g</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[8rem] pb-5">n</div>
+        <div class="flex justify-center pt-[7rem] pb-5">j</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">u</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">l</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">z</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">d</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">e</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">s</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">i</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">g</div>
+        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">n</div>
       </div>
-      <main>
+      <main class="max-w-page mx-auto">
         {{ content | safe }}
       </main>
     </div>

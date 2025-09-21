@@ -1,12 +1,37 @@
 @import "tailwindcss";
 @source "./src/**/*.{html,njk,js}", "./_site/**/*.html";
 
-/* utilities included via the main import above */
+/* Base typography: use Inter and set base size */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  /* 18px base using rem units (1rem = 16px) */
+  --text-base: 1.125rem;
+  --text-base--line-height: calc(1.5 / 1); /* 27px line-height */
+}
 
+/* Keep root at 100% and set body to 1.125rem (≈18px) */
+html { font-size: 100%; }
+body { font-size: 1.125rem; }
 
-/* Tailwind v4: define tokens for colors and effects used */
-/* Using Tailwind v4 defaults; no custom @theme tokens needed here. */
+.max-w-page {
+  max-width: 80rem;
+}
 
+.prose-max-w {
+  max-width: 85ch;
+}
+
+.prose-w-m {
+  max-width: 55ch;
+}
+
+.fig-caption {
+  margin-block-start: 1.5rem;
+  font-size: 0.875rem;
+  /* color: var(--color-slate-100); */
+}
 
 .skills {
     display: grid;
@@ -191,5 +216,3 @@
     100% { filter: hue-rotate(360deg); }
   }
 }
-
-/* No custom utility shims needed; relying on Tailwind utilities. */
