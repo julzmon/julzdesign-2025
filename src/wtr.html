@@ -22,7 +22,7 @@ templateEngineOverride: njk
 {# {% image "/img/westrock/westrock-sketch-design-syste-screenshot.png", "", { widths: [900, 1400], sizes: "100vw" } %} #}
 <section class="sm:flex gap-6 px-6 sm:px-12 py-10 sm:py-20 prose-max-w mx-auto">
   <div class="grow">
-    <h2 class="font-bold text-2xl mb-8">Role & Team</h2>
+    <h2 class="font-bold text-4xl mb-8">Role & Team</h2>
   </div>
   <div class="prose-w-m">
     <p class="max-w-prose mb-8">I was the sole architect and driver of the Westrock Design System. I wore multiple hats across the lifespan of the project. Serving as the design system architect, product manager, scrum master, accessibility lead, designer, and front-end contributor.</p>
@@ -31,14 +31,14 @@ templateEngineOverride: njk
     <div class="mt-8"></div>
   </div>
 </section>
-<div class="grid sm:grid-cols-2 gap-6 p-6 bg-slate-900">
+<div class="grid sm:grid-cols-2 gap-6 p-6 bg-slate-200">
   {% image "/img/westrock/tech-1.jpeg", "Engineering alignment session", { widths: [800, 1200], sizes: "(min-width: 1024px) 1024px, 100vw" } %}
   {% image "/img/westrock/tech-2.jpeg", "Engineering alignment session", { widths: [800, 1200], sizes: "(min-width: 1024px) 1024px, 100vw" } %}
 </div>
 
 <section class="sm:flex gap-6 px-6 sm:px-12 py-10 sm:py-20 prose-max-w mx-auto">
   <div class="grow">
-    <h2 class="font-bold text-2xl mb-8">Strategy</h2>
+    <h2 class="font-bold text-4xl mb-8">Strategy</h2>
   </div>
   <div class="prose-w-m">
     <p class="max-w-prose mb-2">My first step was to define core goals:</p>
@@ -51,14 +51,22 @@ templateEngineOverride: njk
     <p class="max-w-prose">I set up a governance model with defined roles, created a roadmap that prioritized foundational tokens and components, and aligned system principles to support theming and brand consistency.</p>
   </div>
 </section>
-<div class="grid sm:grid-cols-2 gap-3 p-3 bg-slate-900">
+<div class="grid sm:grid-cols-2 gap-6 p-6 bg-slate-200">
+{% image "/img/westrock/roadmap.png",
+      "",
+      {
+        description: "FY24 roadmap highlighting quarterly KPIs for scale, pilot, and discovery initiatives, including .COM alignment and token adoption.",
+        widths: [900, 1400],
+        sizes: "100vw"
+      }
+    %}
       {% image "/img/westrock/stories-1.png", "Backlog in JIRA: component workstream", { widths: [700, 1200], sizes: "(min-width: 1024px) 900px, 100vw" } %}
       {% image "/img/westrock/stories-2.png", "Backlog: documentation workstream", { widths: [700, 1200], sizes: "(min-width: 1024px) 900px, 100vw" } %}
 </div>
 
 <section class="sm:flex gap-6 px-6 sm:px-12 py-10 sm:py-20 prose-max-w mx-auto">
   <div class="grow">
-    <h2 class="font-bold text-2xl mb-8">Execution</h2>
+    <h2 class="font-bold text-4xl mb-8">Execution</h2>
   </div>
   <div class="prose-w-m">
     <ul class="list-insides list-disc max-w-prose ml-5 mb-8">
@@ -72,7 +80,7 @@ templateEngineOverride: njk
     <p class="mb-2">Once the system was established and adopted across key projects, we created an internal promotional video to highlight its value and drive broader awareness across product, engineering, and business teams.</p>
   </div>
 </section>
-<div class="grid sm:grid-cols-2 gap-3 p-3 bg-slate-900">
+<div class="grid sm:grid-cols-2 gap-3 p-3 bg-slate-200">
       {% image "/img/westrock/audit-1.png", "UI audit findings 1", { widths: [600, 900], sizes: "(min-width: 768px) 50vw, 100vw" } %}
       {% image "/img/westrock/audit-2.png", "UI audit findings 2", { widths: [600, 900], sizes: "(min-width: 768px) 50vw, 100vw" } %}
       {% image "/img/westrock/audit-3.png", "UI audit findings 3", { widths: [600, 900], sizes: "(min-width: 768px) 50vw, 100vw" } %}
@@ -82,7 +90,7 @@ templateEngineOverride: njk
 
 <section class="sm:flex gap-6 px-6 sm:px-12 py-10 sm:py-20 prose-max-w mx-auto">
   <div class="grow">
-    <h2 class="font-bold text-2xl mb-8">Accessibility Focus</h2>
+    <h2 class="font-bold text-4xl mb-8">Accessibility Focus</h2>
   </div>
   <div class="prose-w-m">
     <p>Accessibility was embedded from the beginning. I structured color tokens around contrast requirements, added interaction specs for keyboard and screen reader use, and partnered with QA or compliance teams for review. My checklists helped guide product teams and reduced accessibility tech debt in core apps.</p>
@@ -91,7 +99,7 @@ templateEngineOverride: njk
 
 <section class="sm:flex gap-6 px-6 sm:px-12 py-10 sm:py-20 prose-max-w mx-auto">
   <div class="grow">
-    <h2 class="font-bold text-2xl mb-8">Outcomes</h2>
+    <h2 class="font-bold text-4xl mb-8">Outcomes</h2>
   </div>
   <div class="prose-w-m">
     <ul class="list-insides list-disc max-w-prose ml-5 mb-8">

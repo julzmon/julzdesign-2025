@@ -15,6 +15,15 @@
 html { font-size: 100%; }
 body { font-size: 1.125rem; }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 900;
+}
+
 .max-w-page {
   max-width: 80rem;
 }
