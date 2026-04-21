@@ -60,6 +60,21 @@ test("dark mode keeps the same active nav color as light mode", () => {
   );
 });
 
+test("main content opts into native page transitions", () => {
+  assert.match(styles, /@view-transition\s*\{\s*navigation:\s*auto;\s*\}/);
+  assert.match(styles, /main\s*\{[^}]*view-transition-name:\s*page-content;/s);
+  assert.match(
+    styles,
+    /::view-transition-new\(page-content\)\s*\{[^}]*animation:\s*page-content-in\s+220ms/s
+  );
+  assert.match(styles, /::view-transition-new\(root\)\s*\{[^}]*animation:\s*none;/s);
+  assert.match(styles, /from\s*\{[^}]*transform:\s*translateY\(12px\);/s);
+  assert.match(
+    styles,
+    /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{[\s\S]*::view-transition-old\(page-content\)[\s\S]*::view-transition-new\(page-content\)[\s\S]*animation:\s*none;/
+  );
+});
+
 function createBrowserContext(systemPrefersDark) {
   const documentElement = {
     dataset: {},

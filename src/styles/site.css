@@ -125,6 +125,27 @@ mark {
   color: var(--mark-color);
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+main {
+  view-transition-name: page-content;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-old(page-content) {
+  animation: page-content-out 120ms ease both;
+}
+
+::view-transition-new(page-content) {
+  animation: page-content-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
 h1,
 h2,
 h3,
@@ -456,9 +477,31 @@ h6 {
   100% { --hue4: 626; }
 }
 
+@keyframes page-content-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* --- Prefers Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
-  .gradient-wrap {
+  .gradient-wrap,
+  ::view-transition-old(page-content),
+  ::view-transition-new(page-content) {
     animation: none; /* Stop all hue animations */
   }
 }
