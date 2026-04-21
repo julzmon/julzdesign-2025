@@ -4,6 +4,21 @@
   "description": "",
   "main": "index.js",
   "packageManager": "pnpm@10.33.0",
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": [
+        "current"
+      ],
+      "cpu": [
+        "current",
+        "arm64",
+        "x64"
+      ],
+      "libc": [
+        "current"
+      ]
+    }
+  },
   "scripts": {
     "start": "run-p start:*",
     "start:eleventy": "eleventy --serve",
