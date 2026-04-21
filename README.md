@@ -4,24 +4,25 @@ Eleventy + Tailwind v4 site using the Tailwind CLI (no PostCSS).
 
 ### Prerequisites
 - Node.js 18+ recommended
-- npm 9+
+- Corepack enabled (`corepack enable`)
+- pnpm 10
 
 ### Install
 ```
-npm install
+pnpm install
 ```
 
 ### Develop
 Runs Eleventy dev server and Tailwind CLI in watch mode, outputting CSS to `_site/styles`.
 ```
-npm run start
+pnpm run start
 ```
 Visit the local URL Eleventy prints (usually `http://localhost:8080`).
 
 ### Build
 Produces a production build with minified HTML and CSS.
 ```
-npm run build
+pnpm run build
 ```
 
 ### Project Structure
@@ -32,4 +33,4 @@ npm run build
 
 ### Notes
 - Tailwind v4 CLI builds CSS from `src/styles/site.css` and writes to `_site/styles/site.css`.
-- In production (`npm run build`), HTML is minified via Eleventy transform.
+- In production (`pnpm run build`), HTML is minified via Eleventy transform.
