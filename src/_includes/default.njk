@@ -39,6 +39,28 @@
         } catch (error) {}
       })();
     </script>
+    <script>
+      (function() {
+        var root = document.documentElement;
+
+        function runFallbackPageMotion() {
+          root.removeAttribute("data-page-motion");
+          requestAnimationFrame(function() {
+            root.setAttribute("data-page-motion", "enter");
+          });
+        }
+
+        if ("onpagereveal" in window) {
+          window.addEventListener("pagereveal", function(event) {
+            if (!event.viewTransition) {
+              runFallbackPageMotion();
+            }
+          }, { once: true });
+        } else {
+          root.setAttribute("data-page-motion", "enter");
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="{{ '/styles/site.css' | url }}" />
     <script defer src="{{ '/theme.js' | url }}"></script>
 
