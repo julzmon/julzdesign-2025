@@ -10,6 +10,7 @@
     <!-- Meta -->
     <meta name="description" content="{{ metadata.description }}" />
     <meta name="generator" content="{{ eleventy.generator }}" />
+    <meta name="color-scheme" content="light dark" />
 
     <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | url }}" />
@@ -27,7 +28,19 @@
 
     <title>{{ title or metadata.title }}</title>
 
-  <link rel="stylesheet" href="{{ '/styles/site.css' | url }}" />
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('julzdesign-theme');
+          if (theme === 'light' || theme === 'dark') {
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.style.colorScheme = theme;
+          }
+        } catch (error) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="{{ '/styles/site.css' | url }}" />
+    <script defer src="{{ '/theme.js' | url }}"></script>
 
     <!-- Vercel Speed Insights -->
     <script>
@@ -103,29 +116,54 @@
   </head>
 
   <body>
-    <header id="main-header" class="p-2 bg-black text-white fixed top-6 left-1/2 -translate-x-1/2 mx-auto rounded-full shadow-lg backdrop-blur z-50 w-fit transition-all duration-500">
+    <header id="main-header" class="site-header p-2 bg-black text-white fixed top-6 left-1/2 -translate-x-1/2 mx-auto rounded-full shadow-lg backdrop-blur z-50 w-fit transition-all duration-500">
       <nav>
         <ul class="flex gap-1 justify-center">
-          <li><a class="h-10 inline-flex place-items-center rounded-full py-2 px-3 {% if page.url === '/' %} bg-slate-600 text-white{% endif %}" href="{{ '/' | url }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0 -.146-.354L13 5.793V2.5a.5.5 0 0 0 -.5-.5h-1a.5.5 0 0 0 -.5.5v1.293L8.354 1.146a.5.5 0 0 0 -.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/></svg> <span class="sr-only">Home</span></a></li>
-          {# <li><a class="h-10 inline-flex place-items-center rounded-full py-2 px-3 {% if page.url === '/wtr/' %} bg-slate-600 text-white{% endif %}" href="{{ '/wtr/' | url }}">KeyBank</a></li> #}
-          <li><a class="h-10 inline-flex place-items-center rounded-full py-2 px-3 {% if page.url === '/wtr/' %} bg-slate-600 text-white{% endif %}" href="{{ '/wtr/' | url }}">WestRock</a></li>
-          <li><a class="h-10 inline-flex place-items-center rounded-full py-2 px-3 {% if page.url === '/pru/' %} bg-slate-600 text-white{% endif %}" href="{{ '/pru/' | url }}">Prudential</a></li>
-          {# <li class="mr-3"><a class="h-10 inline-flex place-items-center rounded py-1 px-3 {% if page.url === '/ui/' %} bg-slate-600 text-white{% endif %}" href="{{ '/ui/' | url }}">UI Design</a></li> #}
+          <li><a class="nav-link h-10 inline-flex place-items-center rounded-full py-2 px-3 {% if page.url === '/' %} nav-link-active bg-slate-600 text-white{% endif %}" href="{{ '/' | url }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0 -.146-.354L13 5.793V2.5a.5.5 0 0 0 -.5-.5h-1a.5.5 0 0 0 -.5.5v1.293L8.354 1.146a.5.5 0 0 0 -.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/></svg> <span class="sr-only">Home</span></a></li>
+          {# <li><a class="nav-link h-10 inline-flex place-items-center rounded-full py-2 px-3 {% if page.url === '/wtr/' %} nav-link-active bg-slate-600 text-white{% endif %}" href="{{ '/wtr/' | url }}">KeyBank</a></li> #}
+          <li><a class="nav-link h-10 inline-flex place-items-center rounded-full py-2 px-3 {% if page.url === '/wtr/' %} nav-link-active bg-slate-600 text-white{% endif %}" href="{{ '/wtr/' | url }}">WestRock</a></li>
+          <li><a class="nav-link h-10 inline-flex place-items-center rounded-full py-2 px-3 {% if page.url === '/pru/' %} nav-link-active bg-slate-600 text-white{% endif %}" href="{{ '/pru/' | url }}">Prudential</a></li>
+          {# <li class="mr-3"><a class="nav-link h-10 inline-flex place-items-center rounded py-1 px-3 {% if page.url === '/ui/' %} nav-link-active bg-slate-600 text-white{% endif %}" href="{{ '/ui/' | url }}">UI Design</a></li> #}
+          <li class="theme-menu-wrap">
+            <button class="theme-trigger" type="button" popovertarget="theme-menu" popovertargetaction="toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu" aria-label="Theme: System" data-theme-trigger>
+              <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                <path d="M12 3.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Zm0 1.5v13.5a6.75 6.75 0 0 1 0-13.5Z" fill="currentColor" />
+              </svg>
+              <span class="sr-only">Theme</span>
+            </button>
+            <div class="theme-menu" id="theme-menu" role="menu" popover="auto">
+              <button class="theme-option" type="button" role="menuitemradio" aria-checked="true" data-theme-option="system">
+                <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5h-4.75v2.5H16a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1 0-1.5h3.25V16H6.5A2.5 2.5 0 0 1 4 13.5v-8Zm2.5-1A1 1 0 0 0 5.5 5.5v8a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-11Z" fill="currentColor" /></svg>
+                System
+                <span class="theme-check" data-theme-check>✓</span>
+              </button>
+              <button class="theme-option" type="button" role="menuitemradio" aria-checked="false" data-theme-option="light">
+                <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M12 5a1 1 0 0 1-1-1V2.75a1 1 0 1 1 2 0V4a1 1 0 0 1-1 1Zm0 16.25a1 1 0 0 1-1-1V19a1 1 0 1 1 2 0v1.25a1 1 0 0 1-1 1ZM4.75 12a1 1 0 0 1-1 1H2.5a1 1 0 1 1 0-2h1.25a1 1 0 0 1 1 1Zm16.75 0a1 1 0 0 1-1 1h-1.25a1 1 0 1 1 0-2h1.25a1 1 0 0 1 1 1ZM6.52 7.93a1 1 0 0 1-1.41 0l-.88-.88a1 1 0 1 1 1.41-1.41l.88.88a1 1 0 0 1 0 1.41Zm13.25 10.43a1 1 0 0 1-1.41 1.41l-.88-.88a1 1 0 0 1 1.41-1.41l.88.88ZM17.48 7.93a1 1 0 0 1 0-1.41l.88-.88a1 1 0 0 1 1.41 1.41l-.88.88a1 1 0 0 1-1.41 0ZM4.23 18.36l.88-.88a1 1 0 1 1 1.41 1.41l-.88.88a1 1 0 0 1-1.41-1.41ZM12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z" fill="currentColor" /></svg>
+                Light
+                <span class="theme-check" data-theme-check hidden>✓</span>
+              </button>
+              <button class="theme-option" type="button" role="menuitemradio" aria-checked="false" data-theme-option="dark">
+                <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M20.4 14.5a.85.85 0 0 1 .98 1.05A9.75 9.75 0 1 1 8.45 2.62a.85.85 0 0 1 1.05.98 8.05 8.05 0 0 0 10.9 10.9Z" fill="currentColor" /></svg>
+                Dark
+                <span class="theme-check" data-theme-check hidden>✓</span>
+              </button>
+            </div>
+          </li>
         </ul>
       </nav>
     </header>
   <div class="gradient-wrap">
       <div class="grid grid-flow-col auto-cols-fr mb-12">
-        <div class="flex justify-center pt-[7rem] pb-5">j</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">u</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">l</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">z</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">d</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">e</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">s</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">i</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">g</div>
-        <div class="border-l border-gray-300 flex justify-center pt-[7rem] pb-5">n</div>
+        <div class="brand-letter flex justify-center pt-[7rem] pb-5">j</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">u</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">l</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">z</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">d</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">e</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">s</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">i</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">g</div>
+        <div class="brand-letter border-l border-gray-300 flex justify-center pt-[7rem] pb-5">n</div>
       </div>
       <main class="max-w-page mx-auto">
         {{ content | safe }}
