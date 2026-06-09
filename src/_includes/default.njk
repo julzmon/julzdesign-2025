@@ -28,6 +28,22 @@
 
     <title>{{ title or metadata.title }}</title>
 
+    {% if build.isProduction and metadata.googleAnalyticsMeasurementId %}
+      <!-- Google Analytics -->
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id={{ metadata.googleAnalyticsMeasurementId }}"
+      ></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "{{ metadata.googleAnalyticsMeasurementId }}");
+      </script>
+    {% endif %}
+
     <script>
       (function() {
         try {
