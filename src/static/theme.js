@@ -65,7 +65,7 @@
 
     options.forEach((option) => {
       const isActive = option.dataset.themeOption === currentPreference;
-      option.setAttribute("aria-checked", String(isActive));
+      option.setAttribute("aria-pressed", String(isActive));
       option.classList.toggle("theme-option-active", isActive);
 
       const check = option.querySelector("[data-theme-check]");

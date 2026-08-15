@@ -78,7 +78,7 @@ templateEngineOverride: njk
       <!-- Visual prompt: Accessibility checklist, WCAG audit summary, screen reader annotation -->
     </div>
     <div>
-      <img src="../img/pru/cheatsheet.png" alt="Accessibility Cheatsheet">
+      {% image "/img/pru/cheatsheet.png", "Accessibility cheatsheet", { widths: [600, 1200], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -97,8 +97,8 @@ templateEngineOverride: njk
       <!-- Visual prompt: Before/after metrics dashboard, reuse heatmap, or developer testimonial -->
     </div>
     <div>
-      <img src="../img/pru/Integration.png" alt="Integration Dashboard" class="mb-5">
-      <img src="../img/pru/BackstopJS-Report-2.png" alt="Visual Regression Report">
+      <div class="mb-5">{% image "/img/pru/Integration.png", "Integration dashboard", { widths: [600, 1064], sizes: "(min-width: 768px) 768px, 100vw" } %}</div>
+      {% image "/img/pru/BackstopJS-Report-2.png", "Visual regression report", { widths: [600, 1138], sizes: "(min-width: 768px) 768px, 100vw" } %}
     </div>
   </div>
 </section>
@@ -131,7 +131,7 @@ templateEngineOverride: njk
   <h2 class="font-bold text-4xl mb-8">"Pru-Workbench" pioneering design system development pre-Storybook era </h2>
   <p class="ml-12 mr-6 mb-5 max-w-prose text-xl">Watch as we pioneer design system development, crafting components and testing them in a pre-Storybook era.</p>
   <div>
-  <iframe class="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/s49GxxEE878?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe class="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/s49GxxEE878?rel=0" title="Pru-Workbench design system development video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
   </div>
 </section>
 
